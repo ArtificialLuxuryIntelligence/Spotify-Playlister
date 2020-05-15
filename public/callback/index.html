@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>SPOTAPI</title>
+  </head>
+  <body>
+    <h1>WFMUPLAYLISTER</h1>
+
+    <h3>search for album</h3>
+
+    <form id="searchform" action="#">
+      <label for="artist">Artist</label>
+      <input name="artist" type="text" />
+      <label for="album">Album</label>
+      <input name="album" type="text" />
+      <input type="submit" value="search" />
+    </form>
+    <h3>scrape wfmu url</h3>
+    <form id="urlform" action="/scrapethis" method="POST">
+      <label for="url">url</label>
+      <input name="url" type="text" />
+      <input type="submit" value="scrape url" />
+    </form>
+
+    <h3>create playlist (test)</h3>
+    <form id="create-playlist">
+      <label for="playlistName">playlist name</label>
+      <input type="text" name="playlistName" />
+      <input type="submit" value="create" />
+    </form>
+    <div id="playlists"></div>
+    <button id="add-to-playlist">add to playlist</button>
+    <p id="message"></p>
+    <div id="results"></div>
+
+    <a href="/">home</a>
+    <a href="/wf">wf</a>
+  </body>
+
+  <script src="index.js"></script>
+</html>
