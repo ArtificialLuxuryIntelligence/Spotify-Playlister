@@ -22,6 +22,9 @@ module.exports = function (url) {
 // --- going to need a few more of these for prev years/formats
 
 //
+
+// returns data in form [["artist-album","artist-album","artist-album","artist-album"],["artist-album"],["artist-album"]]
+// i.e an array of arrays. the inner arrays currently represent distinct ul elements in the DOM
 function scrapeListItems2020(html) {
   console.log("Scraping...");
 

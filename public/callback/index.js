@@ -78,11 +78,35 @@ addToPlaylist.addEventListener("click", () => {
     box.parentElement.remove();
   });
   console.log(uris);
+
+  //API accepts maximum 100 uris per request
+  let urisSplit = chunkArray(uris, 95);
+  console.log(urisSplit);
+
   let playlistId = playlists.querySelector("input[type=checkbox]:checked");
 
-  spotifyBody(`/playlists/${playlistId.id}/tracks`, "POST", { uris: uris });
+  // spotifyBody(`/playlists/${playlistId.id}/tracks`, "POST", { uris: uris });
   // /playlists/{playlist_id}/tracks
+
+  //change this:
+  loopWithDelay(
+    [urisSplit],
+    2500,
+    (uris) =>
+      spotifyBody(`/playlists/${playlistId.id}/tracks`, "POST", { uris: uris }),
+    () => {} //only using first section here
+  );
 });
+
+function chunkArray(array, chunk_size) {
+  let results = [];
+
+  while (array.length) {
+    results.push(array.splice(0, chunk_size));
+  }
+
+  return results;
+}
 
 // scrapes this url (only works for a few wfmu urls)
 urlForm.addEventListener("submit", async (e) => {
